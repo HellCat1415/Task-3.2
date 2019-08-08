@@ -1,35 +1,35 @@
 #include "splashkit.h"
 
-#define RADIUS 50
+#define RADIUS 50 /* wouldnt reccoment defining radius in this way, since radiuses for circles can be different
+i would reccomend rather doing a const variable, since radius is something that is subject to change, while PI and the accelaretion of gravity usually dont change, and those types of numbers are meant for defining. */
 
 int main()
 {
-    double x;
-    double y;
+    double x, y;
     color circle_color = COLOR_GREEN;
 
     open_window("Circle Mover by Peta", 800, 600);
 
     x = screen_width() / 2;
-    y = screen_height() / 2;
+    y = screen_height() / 2; /* i would reccomend using a different variable type for width and height of your program, unless you want half pixels lol */
 
     while( not quit_requested() )
     {
         process_events();
  
-        if ( key_typed( C_KEY ) )
+        if ( key_typed( C_KEY ) ) // i would reccomend using switches for this to increase readability
         {
             circle_color = random_color();
         }
 
         if ( key_down(RIGHT_KEY) )
         {
-           x = x + 3;
+           x = x + 3; // look at next comment
         }
 
         if ( key_down(LEFT_KEY) )
         {
-           x -= 3;
+           x -= 3; // stick ot one style x-=y  or x=x-y take a look at my last comment and how your notation is not consistent.
         }
 
         if ( x + RADIUS > screen_width() )
